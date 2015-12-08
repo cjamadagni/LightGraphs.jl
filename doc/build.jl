@@ -133,9 +133,6 @@ Centrality measures implemented in *LightGraphs.jl* include the following:
 
 {{CompleteGraph, CompleteDiGraph, StarGraph, StarDiGraph,PathGraph, PathDiGraph, WheelGraph, WheelDiGraph}}
 
-The following graphs are undirected only:
-
-{{DiamondGraph, BullGraph, ChvatalGraph, CubicalGraph, DesarguesGraph, DodecahedralGraph, FruchtGraph, HeawoodGraph, HouseGraph, HouseXGraph, IcosahedralGraph, KrackhardtKiteGraph, MoebiusKantorGraph, OctahedralGraph, PappusGraph, PetersenGraph, SedgewickMazeGraph, TetrahedralGraph, TruncatedCubeGraph, TruncatedTetrahedronGraph, TutteGraph}}
 """
 
 @file "gettingstarted.md" """
@@ -222,8 +219,8 @@ distmx[5,4] = 2.5
 dijkstra_shortest_paths(g, 4, distmx=distmx).dists
 
 # graph I/O
-g = readgraph("mygraph.jgz")
-write(g,"mygraph.jgz")
+g = load("mygraph.jgz", "mygraph")
+save("mygraph.jgz", g, "mygraph")
 ```
 """
 
@@ -329,7 +326,7 @@ undirected graphs:
 functions with two graph arguments will require them to be of the same type
 (either both `Graph` or both `DiGraph`).
 
-{{complement, reverse, reverse!, blkdiag, intersect, difference, symmetric_difference, union, induced_subgraph}}
+{{complement, reverse, reverse!, blkdiag, union, intersect, difference, symmetric_difference, induced_subgraph, join, tensor_product, cartesian_product, crosspath}}
 """
 
 @file "pathing.md" """
@@ -417,21 +414,21 @@ output above.
 
 @file "persistence.md" """
 ## Writing a Graph
-Graphs may be written to I/O streams and files using the `write` function:
+Graphs may be written to I/O streams and files using the `save` function:
 
-{{write}}
+{{save}}
 
 ## Reading a Graph From a File
-Graphs stored using the `write` functions above may be loaded using `readgraph`:
+Graphs stored using the `save` functions above may be loaded using `load`:
 
-{{readgraph, readgraphml, readgml}}
+{{load}}
 
 ## Examples
 ```julia
-julia> write(STDOUT, g)
-julia> write(g, "mygraph.jgz")
-julia> g = readgraph("mygraph.jgz")
-julia> g = readgraphml("mygraph.xml")
-julia> g = readgml("mygraph.gml")
+julia> save(STDOUT, g)
+julia> save("mygraph.jgz", g, "mygraph"; compress=true)
+julia> g = load("multiplegraphs.jgz")
+julia> g = load("multiplegraphs.xml", :graphml)
+julia> g = load("mygraph.gml", "mygraph", :gml)
 ```
 """

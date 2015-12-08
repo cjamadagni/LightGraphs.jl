@@ -6,7 +6,7 @@
 [![Documentation Status](https://readthedocs.org/projects/lightgraphsjl/badge/?version=latest)](http://lightgraphsjl.readthedocs.org/en/latest/)
 [![Join the chat at https://gitter.im/JuliaGraphs/LightGraphs.jl](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JuliaGraphs/LightGraphs.jl)
 
-*NOTE: LightGraphs v0.3.6 is the last version guaranteed to work with Julia 0.3. Please upgrade to Julia 0.4 for the latest features.*
+*NOTE: LightGraphs v0.3.7 is the last version guaranteed to work with Julia 0.3. Please upgrade to Julia 0.4 for the latest features.*
 
 
 An optimized graphs package.
@@ -75,8 +75,8 @@ distmx[5,4] = 2.5
 dijkstra_shortest_paths(g, 4, distmx=distmx).dists
 
 # graph I/O
-g = readgraph("mygraph.jgz")
-write(g,"mygraph.jgz")
+g = load("mygraph.jgz", "mygraph")
+save(g,"mygraph.jgz"; compress=true)
 ```
 
 ### Current functionality
