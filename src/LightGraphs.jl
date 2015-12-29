@@ -112,7 +112,9 @@ CompleteBipartiteGraph, CompleteDiGraph, StarDiGraph, PathDiGraph, Grid,
 WheelDiGraph, CycleDiGraph, BinaryTree, DoubleBinaryTree, RoachGraph,
 
 #Datasets
-Datasets
+Datasets,
+
+#Minimum Spanning Tree
 
 
 """An optimized graphs package.
